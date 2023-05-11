@@ -27,6 +27,16 @@ const menuVariants = {
 const MobileNav = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
+  // show submenu
+  const handleShowSubMenu = () => {
+    setOpenMenu(false);
+  };
+
+  // hide menu
+  const handleHideMenu = () => {
+    setOpenMenu(false);
+  };
+
   return (
     <nav className="text-primary xl:hidden">
       {/* nav open button */}
@@ -47,7 +57,7 @@ const MobileNav = () => {
         {/* icon */}
         <div
           className="text-4xl absolute top-14 left-4 z-30 text-primary cursor-pointer"
-          onClick={() => setOpenMenu(false)}
+          onClick={handleShowSubMenu}
         >
           <IoMdClose />
         </div>
@@ -55,16 +65,24 @@ const MobileNav = () => {
         {/* menu list */}
         <ul className="h-full flex flex-col items-center justify-center gap-y-8 text-primary font-bold font-primary text-3xl">
           <li>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"} onClick={handleHideMenu}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to={"/about"}>About</Link>
+            <Link to={"/about"} onClick={handleHideMenu}>
+              About
+            </Link>
           </li>
           <li>
-            <Link to={"/portfolio"}>Portfolio</Link>
+            <Link to={"/portfolio"} onClick={handleHideMenu}>
+              Portfolio
+            </Link>
           </li>
           <li>
-            <Link to={"/contact"}>Contact</Link>
+            <Link to={"/contact"} onClick={handleHideMenu}>
+              Contact
+            </Link>
           </li>
         </ul>
       </motion.div>

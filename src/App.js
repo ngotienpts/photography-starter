@@ -11,7 +11,7 @@ import AnimRoutes from "./components/AnimRoutes";
 import { CursorContext } from "./context/CursorContext";
 // component
 const App = () => {
-  const { cursorVariants } = useContext(CursorContext);
+  const { cursorVariants, cursorBG } = useContext(CursorContext);
   return (
     <>
       <Router>
@@ -21,8 +21,8 @@ const App = () => {
       {/* cursor */}
       <motion.div
         variants={cursorVariants}
-        animate={"default"}
-        className="w-8 h-8 bg-primary fixed top-0 left-0 pointer-events-none z-50"
+        animate={cursorBG}
+        className="w-8 h-8 bg-primary fixed top-0 left-0 pointer-events-none z-50 rounded-full"
       ></motion.div>
     </>
   );

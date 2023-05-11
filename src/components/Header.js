@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 // import components
 import Socials from "./Socials";
@@ -9,17 +9,30 @@ import Logo from "../img/header/logo.svg";
 
 // import link
 import { Link } from "react-router-dom";
+// import cursor context
+import CursorProvider, { CursorContext } from "../context/CursorContext";
 
 const Header = () => {
+  //
+  const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+
   return (
     <header className="flex items-center fixed w-full z-30 px-[30px] lg:px-[100px] h-[100px] lg:h-[140px]">
       <div className="flex flex-col lg:flex-row lg:items-center w-full justify-between">
         {/* image */}
-        <Link to={"/"}>
+        <Link
+          to={"/"}
+          onMouseEnter={mouseEnterHandler}
+          onMouseLeave={mouseLeaveHandler}
+        >
           <img src={Logo} alt="logo" className="max-w-[200px]" />
         </Link>
         {/* nav - initially hidden - show on desktop PC */}
-        <nav className="hidden xl:flex items-center gap-x-12 font-semibold">
+        <nav
+          className="hidden xl:flex items-center gap-x-12 font-semibold"
+          onMouseEnter={mouseEnterHandler}
+          onMouseLeave={mouseLeaveHandler}
+        >
           <Link
             to={"/"}
             className="text-[#696c6d] hover:text-primary transition"
